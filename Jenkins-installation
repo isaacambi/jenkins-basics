@@ -1,0 +1,56 @@
+JENKINS INSTALLATION
+
+1. Which of the following options best describes what Jenkins is?
+Ans Jenkins is an automation server.
+
+2. What is CI/CD?
+CI/CD is the continuous integration and continuous delivery/deployment process.
+
+3. Can we use Jenkins to automate routine system administration tasks?
+
+Ans Yes, we can use Jenkins to automate our routine system administration tasks.
+
+4.Which of the following packages is a prerequisite for installing Jenkins ?
+Ans Java
+
+5. Can we run Jenkins in a container ?
+Yes, we can host Jenkins on a container as well.
+
+6. Now let us install Jenkins on the centos-host machine and configure it to run
+ on port 8090 instead of the default port 8080.
+
+You can refer to the Jenkins Installation Docs located above the terminal.
+
+    Jenkins is installed and configured as needed
+
+7. Before installing Jenkins make sure to install pre-requisites like java.
+
+
+You can update the default Jenkins port by modifying JENKINS_PORT environment
+ variable in /lib/systemd/system/jenkins.service file.
+
+8. sudo yum install epel-release -y
+sudo yum install java-11-openjdk -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo --no-check-certificate
+sudo rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum install jenkins -y
+
+Edit /lib/systemd/system/jenkins.service file and change Jenkins port to 8090
+ by updating Environment="JENKINS_PORT=" variable value.
+Environment="JENKINS_PORT=8090"
+Once done start Jenkins service.
+
+9. Follow the on-screen instructions as given in the hint and further as below:
+
+
+1. Under Create First Admin User, enter the required details as given in the question.
+
+2. Then click on Save and Continue.
+
+3. Under Instance Configuration, you can click on Not now.
+
+4. Finally click on Start using Jenkins button.
+
+
+
+
