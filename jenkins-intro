@@ -1,0 +1,31 @@
+Jenkins
+
+getting familiar with an application
+n this lab, we will deploy the go-webapp-sample app that we saw in the lecture.
+ This sample application uses Echo as web application framework and Gorm as the backend database.
+1. Which of the following commands is used to clone a git repository?
+git clone <repo-url>
+
+2. Clone this git repository under /home/bob.
+cd /home/bob
+git clone https://github.com/kodekloudhub/go-webapp-s
+
+3. Now let us deploy the sample app from the repository that we just cloned. Run the following commands:
+
+cd /home/bob/go-webapp-sample/
+go run main.go &
+
+4. You can now access the sample app using the Sample-App button located above the terminal.
+
+You can login with the following username and password:
+
+
+username: test
+
+password: test
+
+
+
+
+
+
