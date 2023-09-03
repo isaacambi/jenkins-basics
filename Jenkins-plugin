@@ -1,0 +1,148 @@
+PLUGIN
+
+A plugin, short for "plug-in," is a software component that adds specific functionality 
+or features to a larger software application or system. Plugins are often used to extend
+ the capabilities of software, making it more versatile and customizable without the 
+need to modify the core code of the application.
+
+Here are some key characteristics and uses of plugins:
+
+    Enhanced Functionality: Plugins are designed to provide additional features or services
+ that may not be included in the original software. For example, web browsers like Chrome 
+or Firefox allow users to install plugins to block ads, improve security, or add new features
+ like password managers.
+
+    Modularity: Plugins promote modularity in software development. Instead of building all
+ features into the main program, developers can create plugins that can be added or removed
+ as needed, allowing for easier maintenance and updates.
+
+    Customization: Users and developers can tailor the software to their specific needs by
+ selecting and configuring the plugins they want. This level of customization is particularly
+ useful in content management systems (e.g., WordPress), audio/video editing software
+ (e.g., Adobe Premiere Pro), and other applications.
+
+    Third-Party Development: Often, plugins are created by third-party developers or the
+ community, allowing for a wide range of contributions and innovations. Popular platforms
+ and applications typically have extensive plugin ecosystems.
+
+    Interoperability: Plugins can facilitate integration between different software applications. 
+For example, a plugin might enable data sharing between a CRM system and an email marketing tool.
+
+    Upgrades and Maintenance: Software developers can release updates and bug fixes for
+ plugins independently of the core software, making it easier to keep individual components up to date.
+
+    Performance Optimization: Plugins can help optimize performance by allowing developers 
+to offload certain tasks to separate components, preventing the main application from becoming 
+too bloated or slow.
+
+Examples of plugins include:
+
+    Web Browser Extensions: These plugins enhance browser functionality, such as ad blockers,
+ password managers, and social media sharing tools.
+
+    Audio/Video Editing Plugins: Software like Adobe Premiere Pro or Ableton Live often support
+ third-party plugins for audio and video effects and enhancements.
+
+    Content Management System (CMS) Plugins: Platforms like WordPress use plugins to add features
+ like e-commerce, SEO tools, and social media integration.
+
+    Gaming Plugins: In the context of video games, plugins can add new maps, characters, 
+or gameplay mechanics.
+
+In summary, plugins are modular components that extend the capabilities of software
+ applications, allowing for customization, additional features, and improved interoperability. 
+They are widely used across various software domains to enhance user experiences and streamline
+ development processes.
+
+1. Jenkins server is already installed and it's running on port 8085. You can access the same
+ using Jenkins button on the top bar. Login into the Jenkins server using below given credentials:
+
+Username: admin
+
+Password: Adm!n321
+
+
+Notes:
+
+a.  You might need to restart Jenkins service after installing some plugins or after making 
+some configuration changes etc. In such case please make sure Jenkins service is back up before 
+you submit your solution.
+
+b.  Please make a note of Jenkins credentials given above.
+
+
+2. What are jenkins plugins?
+
+
+A. Plugins are used to configure the security settings in Jenkins.
+
+
+B. Plugins are the primary means of enhancing the functionality of a Jenkins environment to 
+suit organization or user specific needs.
+
+
+C. Plugins are used to create jobs in Jenkins.
+
+
+D. Plugins are the tools to setup CI/CD pipelines in Jenkins.
+Ans = B
+
+
+3. Can we install a plugin on Jenkins controller from web UI as well as using Jenkins CLI?
+Yes, we can install a plugin on Jenkins controller from web UI as well as using Jenkins CLI.
+
+4. Which of the following options under Manage Jenkins you will select to install a Jenkins plugin?
+
+Plugins option under Manage Jenkins will be used to install a Jenkins plugin.
+
+5. Can we install the .hpi plugin file from Jenkins web UI?
+Ans = Yes, we can install the .hpi plugin file from Jenkins web UI as well.
+
+6. Install github plugin from Jenkins web UI.
+
+Note: Just in case Jenkins page gets stuck after restart please try to refresh it manually by running service jenkins restart
+
+    Github plugin installed?
+Follow below given steps:
+
+
+1: Login into Jenkins UI
+
+2: Go to Manage Jenkins
+
+3: Click on Plugins
+
+4: Then search for Github plugin under the Available section and install it
+
+5: Once installed click on Restart Jenkins when installation is complete and no jobs are running.
+
+Github has been successfully installed.
+
+7. Upgrade AWS Batch plugin to the latest version available.
+solution
+Follow below given steps:
+
+
+1 : Login into Jenkins UI
+
+2 : Go to Manage Jenkins
+
+3 : Click on Plugins
+
+4 : Then search for AWS Batch plugin under Updates section and update it
+
+5: Once installed click on Restart Jenkins when installation is complete and no jobs are running.
+
+8. Uninstall the AWS Batch plugin you just upgraded in the previous question.
+
+
+
+
+
+
+
+
+
+
+
+
