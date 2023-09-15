@@ -1,0 +1,288 @@
+s per the Grafana dashboard, how many Jenkins jobs are there?
+
+
+Make sure to look for the latest metrics in the dashboard. For that click on the time navigator option on the top right and then select Last 5 minutes.
+
+Note: Close and open the Grafana again if no changes are reflecting and wait a little as sometimes changes can take few seconds to reflect.
+YSTEMS ADMINISTRATION WITH JENKINS/MONITORING 
+
+1. Jenkins server is already installed and it's running on port 8085. You can access the same using 
+Jenkins button on the top bar. Login into the Jenkins server using below given credentials:
+
+Username: admin
+
+Password: Adm!n321
+
+
+Notes:
+
+
+a. You might need to restart Jenkins service after installing some plugins or after making 
+some configuration changes etc. In such case please make sure Jenkins service is back up before
+ you submit your solution.
+
+
+b. Please make a note of Jenkins credentials given above.
+
+2. $JENKINS_HOME variable holds the value of Jenkins home directory, which is /var/lib/jenkins
+ in most of the cases but nor necessarily. This is where Jenkins stores its data like jobs, plugins, configs etc
+
+3. Which of the following is the main configuration file of Jenkins?
+solution
+config.xml
+
+4. While backing up Jenkins server, which of the following directories is the most crucial to backup?
+solution
+Jenkins home directory is most important to backup, since it contains all jobs, configuration, build history, plugins etc.
+
+5. Install the ThinBackup Jenkins plugin.
+solution
+Login into the Jenkins server and follow the below given steps:
+
+
+1. Go to Manage Jenkins.
+
+2. Click on Plugins.
+
+3. Under Available, search for ThinBackup plugin.
+
+4. Select and install it.
+
+5. After that click on Restart Jenkins when installation is complete and no jobs are running.
+
+
+
+6. Backup Jenkins (including plugins) under /var/lib/jenkins/jenkins_backup directory using thinBackup plugin.
+
+sudo mkdir /var/lib/jenkins/jenkins_backup
+sudo chown -R jenkins /var/lib/jenkins/jenkins_backup
+
+1. Go to Manage Jenkins.
+
+2. Click on ThinBackup.
+
+3. Go to Settings and enter /var/lib/jenkins/jenkins_backup as the Backup directory,
+ tick Backup plugins archives check box and save the changes.
+
+4. Click on Backup Now.
+
+7. Using ThinBackup plugin, restore the Jenkins backup (including plugins) you just took in the previous question.
+
+
+Make sure to restart the Jenkins service after restoring the backup.
+
+service jenkins restart
+
+Login into the Jenkins and follow the below given steps:
+
+1. Go to Manage Jenkins.
+2. Click on ThinBackup.
+3. Click on Restore.
+4. Select the latest backup available from the list, select Restore plugins and then 
+click Restore (you need not to select any other options).
+5. Restart Jenkins service.
+
+service jenkins restart
+
+JENKINS MONITORING
+1. Let us now explore monitoring with Jenkins. To do this we have installed Prometheus 
+and Grafana on the same machine called jenkins-server
+
+As before, you can use the standard admin credentials to login to the Jenkins UI:
+Username: admin
+
+Password: Adm!n321
+
+
+You can also access the Prometheus UI by clicking on the Prometheus button located above the terminal.
+
+2. To setup monitoring with prometheus in Jenkins, please install the plugins mentioned below.
+
+You need to install Prometheus metrics plugin, you can refer to the plugin documentation
+ by clicking on the Prometheus Docs button located above the terminal.
+
+
+Once the plugins have been downloaded, restart Jenkins.
+
+solution
+. Go to Manage Jenkins.
+2. Click on Plugins.
+3. Under Available, search for Prometheus metrics plugin.
+4. Select it and install.
+5. Once installed click on Restart Jenkins when installation is complete and no jobs are running.
+
+3. Which endpoint is the prometheus plugin exposed on by default?
+solution
+
+1. Go to Manage Jenkins.
+
+2. Click on System.
+
+3. Look into the Prometheus section.
+
+4. The default path should be set to prometheus
+
+the default path is prometheus
+
+4. Navigate to the endpoint /prometheus/ and you should be able to see the output generated 
+by the Prometheus plugin.
+
+As an example, if your Jenkins URL is https://8085-port-acc228e844d64736.labs.kodekloud.com
+ then you can view the metrics at the URL: https://8085-port-acc228e844d64736.labs.kodekloud.com/prometheus/
+
+5. Navigate to the Prometheus UI and answer the below questions.
+
+Which target(s) have been configured within the Prometheus configuration?
+solution
+Click on the button called Prometheus and then navigate to --> Status --> Targets and inspect the targets that are UP.
+As of now, only the Prometheus target should be available.
+
+6. Let us now add a scrape config for Jenkins. Update the prometheus configuration file
+ located at /etc/prometheus/prometheus.yml and add the following config under the scrape_configs section:
+
+- job_name: 'Jenkins'
+    metrics_path: /prometheus/
+    static_configs:
+      - targets: ['localhost:8085']
+
+
+
+Once the file is updated, restart prometheus using the below command:
+
+service prometheus restart 
+Wait for few seconds before submitting your question.
+
+
+Note: Here localhost:8085 refers to our Jenkins Controller and the /prometheus/ metrics 
+path is exposed by the prometheus-metrics plugin that we installed previously
+
+ Edit /etc/prometheus/prometheus.yml file
+
+vi /etc/prometheus/prometheus.yml
+
+
+
+
+2. Under scrape_configs section add
+
+- job_name: 'Jenkins'
+    metrics_path: /prometheus/
+    static_configs:
+      - targets: ['localhost:8085']
+
+
+
+3. Then save the file
+
+4. Restart Prometheus Service:
+
+service prometheus restart
+
+7. Now lets test out some queries in Prometheus. Go back to the Prometheus home page 
+(by clicking on the Prometheus button within the UI) and execute the following query:
+
+jenkins_job_count_value
+
+
+What value you got in the output?
+
+1. Click on the Prometheus button on the top of the terminal.
+
+2. Enter the query under Expression
+
+jenkins_job_count_value
+
+
+
+
+3. Then click on Execute button.
+
+4. Look for the Value of the Element.
+
+
+8. How about now? We just added new jobs.
+
+
+Execute the same query again and check if the value changes.
+
+jenkins_job_count_value
+
+
+Note: Close and open the Prometheus again if no changes are reflecting and wait a little as
+ sometimes changes can take few seconds to reflect.
+
+9. Let us see now, how we can use Grafana to visualise Jenkins metrics. Grafana is already
+ installed and can be accessed using Grafana button on the top of the terminal.
+
+Grafana credentials are:
+
+UserName: admin
+
+Password: admin
+
+
+Note:Set a new password admin123 for the admin user.
+
+
+First of all, let us add Prometheus datasource in Grafana. Follow below given steps for that:
+
+-> Login into Grafana and click on Add your first datasource.
+
+-> Then select Prometheus and enter http://localhost:9090 in the URL box.
+
+-> Finally click on Save and test button at the bottom.
+
+-> Click on Grafana logo to move back to the dashboard.
+
+    Prometheus datasource added?
+
+10. Let us create a dashboard in Grafana now to visualise the total number of Jenkins jobs.
+
+
+Use same Grafana credentials to login:
+
+UserName: admin
+
+Password: admin123
+
+Follow below given steps to create a dashboard in Grafana:
+
+
+-> Login into Grafana and click on Create your first dashboard.
+
+-> Then click on Add visualization and at the bottom enter jenkins_job_count_value in the Metrics browser box.
+
+-> Make sure Prometheus is selected as the Data source.
+
+-> On the right side under Panel options, enter Jenkins Jobs Count in Title.
+
+-> Click on Apply button on the top right corner.
+
+-> Finally click on the Save dashboard button (second button on the top right).
+
+-> Enter dashboard name as Jenkins and save it.
+
+    Jenkins dashboard created?
+
+11. As per the Grafana dashboard, how many Jenkins jobs are there?
+
+
+Make sure to look for the latest metrics in the dashboard. For that click on the time navigator 
+option on the top right and then select Last 5 minutes.
+
+Note: Close and open the Grafana again if no changes are reflecting and wait a little as sometimes 
+changes can take few seconds to reflect.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
