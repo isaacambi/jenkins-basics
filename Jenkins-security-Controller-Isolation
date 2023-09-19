@@ -1,0 +1,60 @@
+ECURING JENKINS/CONTROLLER ISOLATION
+1. Jenkins server is already installed and it's running on port 8085. You can access 
+the same using Jenkins button on the top bar. Login into the Jenkins server using below given credentials:
+
+Username: admin
+
+Password: Adm!n321
+
+
+Notes: You might need to restart Jenkins service after installing some plugins or after
+ making some configuration changes etc. In such case please make sure Jenkins service is back up before you submit your solution.
+
+
+ Please make a note of Jenkins credentials given above.
+
+2. Which section of the web UI allows a Jenkins administrator to enable, configure, or
+ disable key security features which apply to the entire Jenkins environment?
+Observe the available options under Security by navigating to Jenkins Dashboard -> Manage Jenkins
+Ans = Security
+
+3. Which among the following is the primary mechanism for securing a Jenkins environment against unauthorized usage?
+solution 
+Access control
+
+4. Select the options that holds true regarding the access to Jenkins environment.
+includes both authentication and authorization.
+
+5. Using both the Security Realm and Authorization configurations it is possible to configure 
+very relaxed or very rigid authentication and authorization schemes in Jenkins.
+
+6. Is it possible to extend the Access Control capabilities of Jenkins?
+Answer = True
+
+7. Let's extend some Authorization capabilities of Jenkins to support even more authorization schemes.
+Install Role-based Authorization plugin.
+
+Note:
+
+Observe the new available options under Authorization using the standard Manage Jenkins > Security screen after the plugin installation.
+
+
+8. Select the option that best describes the concept of distributed builds in Jenkins.
+
+Distributed builds in Jenkins is a great start for protecting the Jenkins controller from malicious (or just broken) build scripts.
+
+Builds should be executed on other nodes than the build controller.
+
+9. By default, Jenkins run its builds on the built-in node. It is done to make smooth transition
+ towards learning Jenkins but is inadvisable in long term.
+It is due to the fact that any builds running on the built-in node have the same level of access
+ to the controller file system as the Jenkins process.
+
+10. Configure Jenkins to prevent builds from running on the Built-In Node directly?
+solution
+Navigate to Manage Jenkins » Manage Nodes and Clouds screen and change the number of Executors to 0 for the Built-In Node.
+
+
+
+
+
