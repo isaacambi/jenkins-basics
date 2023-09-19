@@ -1,0 +1,213 @@
+ING OTHER SERVERS AS A BUILD AGENT
+
+1. Jenkins server is already installed and it's running on port 8085. You can access the same 
+using Jenkins button on the top bar. Login into the Jenkins server using below given credentials:
+
+Username: admin
+
+Password: Adm!n321
+
+
+Notes:
+
+
+a. You might need to restart Jenkins service after installing some plugins or after making 
+some configuration changes etc. In such case please make sure Jenkins service is back up before you submit your solution.
+
+
+b. Please make a note of Jenkins credentials given above.
+
+2. Among the following options, which one is true with respect to the Jenkins build agent?
+
+A. A build agent is an another Jenkins server which is only used to run pipeline jobs.
+
+B. A build agent could only be a Jenkins server itself.
+
+C. A build agent is a Jenkins controller.
+
+D. A build agent is typically a machine, or container, which connects to a Jenkins controller and executes tasks when directed by the controller.
+
+solution
+A build agent is typically a machine, or container, which connects to a Jenkins controller and executes tasks when directed by the controller.
+
+3. Can we use a docker container as an agent node for a Jenkins server?
+solution Yes, we can use a docker container as well, as an agent node for a Jenkins server.
+
+4. Which of the followings is a pre-requisite for a Jenkins agent node?
+
+5. Can we use a Windows based machine as an agent node for a Jenkins server?
+solution 
+Yes, we can use a Windows based machine as well, as an agent node for a Jenkins server.
+
+6. Install SSH Build Agents Jenkins plugin.
+solution
+
+Login into the Jenkins server and follow the below given steps:
+
+1. Go to Manage Jenkins.
+2. Click on Plugins.
+3. Under Available, search for SSH Build Agents plugin.
+4. Select it and install.
+5. Once installed click on Restart Jenkins when installation is complete and no jobs are running.
+
+7. Create a username and password based credentials in Jenkins as per details mentioned below:
+
+Username: bob
+
+Password: caleston123
+
+    Credentials added?
+Login into the Jenkins server and follow the below given steps:
+
+1. Go to Manage Jenkins.
+2. Click on Credentials.
+3. Click on (global) under Domains.
+4. From the option on the right side, click on Add Credentials.
+5. Enter bob under Username.
+6. Enter caleston123 under Password.
+
+7. Leave other options as it is and click on OK.
+
+8. We have a centOS based host node01, which we want to use as a Jenkins agent node.
+But before adding it to Jenkins as a node, we need to install some required dependencies on it.
+
+You can SSH into node01 from Jenkins server using below given credentials:
+
+
+Host Name: node01
+
+Username: bob
+
+Password: caleston123
+
+
+Use below given command to SSH:
+
+ssh bob@node01
+
+
+
+
+Please install the required dependencies on this host, also make sure to install the dependencies
+ which are compatible with the installed Jenkins version.
+solution
+ssh bob@node01
+
+
+
+
+Once logged in, run below given command to install java:
+
+sudo yum install java-11 -y
+
+
+
+
+Move back to Jenkins host:
+
+exit
+
+9. Create a Permanent Agent type agent node named linux-node as per details mentioned below:
+
+1. It should be launched via SSH.
+
+2. You can use the credentials you created in the previous question.
+
+3. The Host value should be node01
+
+4. Its remote root directory should be /home/bob
+
+5. Label it as node01
+
+6. Make sure Only build jobs with label expressions matching this node option is selected for Usage.
+
+
+Note: Just in case the node is in error state after creating the same, then try to relaunch it.
+
+solution
+Login into the Jenkins server and follow the below given steps:
+
+1. Now go to Manage Jenkins.
+2. Click on Nodes and Clouds option under System Configuration.
+3. From the option available on the right side, click on New Node button.
+
+4. Enter the Node name i.e linux-node.
+
+5. Enable Permanent Agent option and click on OK.
+
+6. Enter /home/bob under Remote root directory.
+
+7. Enter node01 under Labels.
+
+8. Select Only build jobs with label expressions matching this node option for Usage.
+
+9. Select Launch Agents via SSH under Launch method.
+
+10. Enter node01 under Host and select the credentials you created in the previous question.
+
+11. Under Host Key Verification Strategy, select Non verifying verification strategy.
+
+12. Leave all other options as it is and click on Save
+
+13. Click on the linux-node and there shouldn't be any errors.
+
+14. Just in case the linux-node node is in error state, then try to relaunch it.
+
+
+10. Create a freestyle job named node-job, and make sure it is restricted to run on linux-node node.
+
+Configure it to echo hello world string.
+
+solution
+Login into the Jenkins server and follow the below given steps:
+
+
+1. Click on New Item.
+
+2. Enter the job name node-job
+
+3. Select Freestyle project and click on OK.
+
+4. In General section, select the Restrict where this project can be run option and enter node01 under Label Expression.
+
+5. Under Build, select Execute shell and enter the command:
+
+echo 'hello world'
+
+
+
+6. Finally click on Save button.
+
+
+11. Create a pipeline job named node-pipeline, and make sure it is restricted to run on linux-node node.
+
+it should just echo the Hello World string.
+
+You can name the stage as per your choice.
+
+solution
+Login into the Jenkins server and follow the below given steps:
+
+1. On the left side click on New Item.
+
+2. Write the job name node-pipeline.
+
+3. Select Pipeline job.
+
+4. Under Pipeline section keep selected Pipeline script as Definition and add below given code in the Script
+
+pipeline {
+    agent {
+       label "node01"
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+
+
+
