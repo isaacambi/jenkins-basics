@@ -1,0 +1,80 @@
+CEAN LAB
+
+Jenkins server is already installed and it's running on port 8085. You can access 
+the same using Jenkins button on the top bar. Login into the Jenkins server using below given credentials:
+
+Username: admin
+
+Password: Adm!n321
+
+
+Notes:
+
+
+a. You might need to restart Jenkins service after installing some plugins or after
+ making some configuration changes etc. In such case please make sure Jenkins service 
+is back up before you submit your solution.
+
+
+b. Please make a note of Jenkins credentials given above.
+
+
+2. What is BlueOcean ?
+BlueOcean is a new UI experience for CI/CD in Jenkins.
+
+
+3. Does BlueOcean provide native integration for branch and pull requests with GitHub and Bitbucket?
+solution
+Yes, BlueOcean provides native integration for branch and pull requests with GitHub and Bitbucket.
+
+4. What is the default URL of BlueOcean UI in Jenkins?
+solution
+<jenkins-url>/blue is the default URL for the BlueOcean UI in Jenkins.
+
+5. Install the Blue Ocean Jenkins plugin.
+After the installation, verify the same by accessing the BlueOcean UI.
+
+Note: Just in case Jenkins page gets stuck after restart please try to refresh it manually.
+solution
+Login into the Jenkins server and follow the below given steps:
+
+1. Go to Manage Jenkins.
+2. Click on Plugins.
+3. Click on Available and search for Blue Ocean plugin.
+4. Select the same and install.
+
+5. Once installed click on Restart Jenkins when installation is complete and no jobs are running.
+
+
+You can access the BlueOcean UI either by directly opening the <jenkins-url>/blue URL or by clicking 
+on the Open Blue Ocean option, on the left side of Jenkins dashboard.
+
+
+6. Create a pipeline in BlueOcean as per details mentioned below:
+
+a. Although source code is hosted on GitHub, but select Git under Where do you store your code to avoid token requirements.
+
+b. Repository URL is https://github.com/kodekloudhub/go-webapp-sample.git.
+
+c. Leave the Username and Password blank.
+
+    Test the pipeline.
+a. Click on Open Blue Ocean.
+
+b. If you get a Welcome to Jenkins pop-up then click on Create a new Pipeline option, 
+   otherwise click on New Pipeline option under Pipelines.
+
+c. Under Where do you store your code?, click on Git.
+
+d. Enter the repository URL i.e https://github.com/kodekloudhub/go-webapp-sample.git.
+
+e. Leave the Username and Password blank and click on Create Pipeline.
+
+f. It will take few seconds and go-webapp-sample pipeline will be created automatically 
+   because this repository already contains a Jenkinsfile.
+
+7. From the BlueOcean UI, you should explore more the created pipeline and the build output to get some insights of it.
+
+
+
+
